@@ -1,7 +1,6 @@
-{div, h1, h4, a}  = React.DOM
+{div}  = React.DOM
 
 SlideMixin = require('../../mixins/slide_mixin')
-marked = require('marked')
 
 module.exports = React.createFactory React.createClass
   displayName: "demo"
@@ -16,5 +15,5 @@ module.exports = React.createFactory React.createClass
       div className: "row",
         div className: "col s12",
           div className: "container white-text",
-              div
-                dangerouslySetInnerHTML: __html: @markedDown()
+            div
+              dangerouslySetInnerHTML: __html: @markedDown()
