@@ -10,7 +10,9 @@ var replace = require('gulp-replace');
 var insert = require('gulp-insert');
 var runSequence = require('run-sequence');
 
-gulp.task('compile', ['build-slides'], function() {
+var fs = require('fs');
+
+gulp.task('compile', ['slides'], function() {
   exec('npm install && npm run deploy', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
@@ -59,43 +61,38 @@ gulp.task('build-slides', function() {
 
 gulp.task('build-routes', function() {
 
-  var files = gulp.src('./slides/*.md')
-    .pipe(filenames('markdown'))
-    .pipe(gulp.dest('./assets/scripts/raw_slides'))
-    .on('end', function() {
-
-    filenames.get('markdown').map(function(file) {
-
+  fs.readdir('./slides/', function(err, items) {
+    items.map(function(file){
       var fileParts = file.split('.');
       var slideName = [fileParts[0], fileParts[1]].join('-')
       var internalSlideName = [fileParts[0], fileParts[1]].join('.')
-
-      gulp.src('./assets/config/routes.coffee')
-        .pipe(insert.append("  '/" + fileParts[0] + "': '" + fileParts[1]  + "'\n"))
-        .pipe(gulp.dest('./assets/config'))
-
+      var route = ""
+      if (fileParts[0] === "0") {
+        route = "  '/': '" + fileParts[1]  + "'\n"
+      } else {
+        route = "  '/" + fileParts[0] + "': '" + fileParts[1]  + "'\n"
+      }
+      fs.appendFile('./assets/config/routes.coffee', route, function(err) {
+        if (err)
+          console.error(err);
+        console.log('Created Route!');
+      });
     });
   });
 });
 
 gulp.task('build-methods', function() {
-
-  var files = gulp.src('./slides/*.md')
-    .pipe(filenames('markdown'))
-    .pipe(gulp.dest('./assets/scripts/raw_slides'))
-    .on('end', function() {
-
-    filenames.get('markdown').map(function(file) {
-
+  fs.readdir('./slides/', function(err, items) {
+    items.map(function(file){
       var fileParts = file.split('.');
       var slideName = [fileParts[0], fileParts[1]].join('-')
       var internalSlideName = [fileParts[0], fileParts[1]].join('.')
-
-      gulp.src('./assets/scripts/components/app.coffee')
-        .pipe(insert.append("  " + fileParts[1]  + ": ->\n"))
-        .pipe(insert.append("    require('./slides/" + slideName  + "') {}\n\n"))
-        .pipe(gulp.dest('./assets/scripts/components'))
-
+      var fn = "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {}\n\n"
+      fs.appendFile('./assets/scripts/components/app.coffee', fn , function(err) {
+        if (err)
+          console.error(err);
+        console.log('Created mini router method!');
+      });
     });
   });
 });
