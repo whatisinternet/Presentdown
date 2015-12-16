@@ -15,7 +15,6 @@ module.exports = React.createFactory React.createClass
     div className: "grey darken-4", style: {height: "100vh"},
       div className: "row",
         div className: "col s12",
-          div className: "container",
-            div className: "card-panel white hoverable",
+          div className: "container text-white",
               div
                 dangerouslySetInnerHTML: __html: @markedDown()
