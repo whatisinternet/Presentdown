@@ -15,6 +15,6 @@ module.exports = React.createFactory React.createClass
     div className: "grey darken-4", style: {height: "100vh"},
       div className: "row",
         div className: "col s12",
-          div className: "container text-white",
+          div className: "container white-text",
               div
                 dangerouslySetInnerHTML: __html: @markedDown()

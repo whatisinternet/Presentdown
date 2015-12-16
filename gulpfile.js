@@ -11,7 +11,7 @@ var runSequence = require('run-sequence');
 
 var fs = require('fs');
 
-gulp.task('compile', ['slides'], function() {
+gulp.task('compile', function() {
   exec('npm install && npm run deploy', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
