@@ -7,7 +7,6 @@ var batch = require('gulp-batch');
 var filenames = require('gulp-filenames');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
-var insert = require('gulp-insert');
 var runSequence = require('run-sequence');
 
 var fs = require('fs');
