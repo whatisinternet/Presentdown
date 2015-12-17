@@ -8,7 +8,7 @@ module.exports =
     if parseInt(e.keyCode) == 39  || parseInt(e.keyCode) == 13
       navigate("/#{location + 1}")
     else if parseInt(e.keyCode) == 37
-      if location == undefined
+      if isNaN(location)
         navigate("/1")
       else if location == 1
         navigate("/")
@@ -18,7 +18,7 @@ module.exports =
   handleClick: (e) ->
     e.preventDefault()
     location = parseInt(_.last( document.location.href.split('/')))
-    if location == undefined
+    if isNaN(location)
       navigate("/1")
     else if e.which == 1
       navigate("/#{location + 1}")
