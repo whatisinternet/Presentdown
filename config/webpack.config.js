@@ -16,7 +16,7 @@ module.exports = {
       { test: /\.coffee$/, loader: "coffee-loader" },
       { test: /\.(png|jpg)$/, loader: "file-loader?name=images/[name].[ext]" },
       { test: /\.(md)$/, loader: "html!markdown?gfm=true" },
-      { test: /\.sass$/, loader: "style-loader!css-loader!sass?indentedSyntax" },
+      { test: /\.sass$/, loader: "style-loader!css-loader!sass?indentedSyntax" }
     ]
   },
   resolve: {

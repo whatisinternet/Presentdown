@@ -8,11 +8,14 @@ module.exports = React.createFactory React.createClass
   mixins: [SlideMixin]
 
   componentDidMount: ->
-    console.warn "Mounted!"
-    hljs.initHighlightingOnLoad()
+    codes = document.getElementsByTagName("code")
+    _.each codes, (code) ->
+      hljs.highlightBlock(code)
 
   markedDown: ->
-    require('../../raw_slides/demo.md')
+    raw_html = require('../../raw_slides/demo.md')
+    console.log raw_html
+    raw_html
 
   render: ->
     div className: "grey darken-4", style: {height: "100vh"},
