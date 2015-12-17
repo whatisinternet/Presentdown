@@ -14,11 +14,11 @@ module.exports = React.createFactory React.createClass
 
   markedDown: ->
     raw_html = require('../../raw_slides/demo.md')
-    console.log raw_html
-    raw_html
+    raw_html.replace("<h1 ", "<h1 class='center-align yellow-text lighten-5' ")
+
 
   render: ->
-    div className: "grey darken-4", style: {height: "100vh"},
+    div className: "blue darken-4", style: {height: "100vh"},
       div className: "row",
         div className: "col s12",
           div className: "container white-text",
