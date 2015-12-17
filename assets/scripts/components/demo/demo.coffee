@@ -7,6 +7,10 @@ module.exports = React.createFactory React.createClass
 
   mixins: [SlideMixin]
 
+  componentDidMount: ->
+    console.warn "Mounted!"
+    hljs.initHighlightingOnLoad()
+
   markedDown: ->
     require('../../raw_slides/demo.md')
 
