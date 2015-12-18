@@ -92,7 +92,13 @@ gulp.task('build-methods', function() {
       var fileParts = file.split('.');
       var slideName = [fileParts[0], fileParts[1]].join('-')
       var internalSlideName = [fileParts[0], fileParts[1]].join('.')
-      var fn = "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {}\n\n"
+      var fn = ""
+      if (fileParts[0] === "0") {
+        fn = "  notFound: ->\n" +  "    require('./slides/" + slideName  + "') {}\n\n"
+        fn += "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {}\n\n"
+      } else {
+        fn = "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {}\n\n"
+      }
       fs.appendFile('./assets/scripts/components/app.coffee', fn , function(err) {
         if (err)
           console.error(err);
