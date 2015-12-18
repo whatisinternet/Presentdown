@@ -16,7 +16,7 @@ module.exports =
 
   h1Replacement: ->
     "<div class='indigo darken-4 slide__heading-wrapper'>
-      <h1 class='center-align white-text slide__heading-heaader'"
+      <h1 class='center-align white-text slide__heading-header'"
 
   updateMarkup: (raw_html) ->
     raw_html = raw_html.replace("<img ", "<img class='responsive-img' ")
