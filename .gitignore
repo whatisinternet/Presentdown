@@ -2,5 +2,3 @@ node_modules
 build/Release
 logs
 *.log
-api_key.coffee
-Presentation.zip
