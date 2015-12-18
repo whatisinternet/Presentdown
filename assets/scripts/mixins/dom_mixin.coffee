@@ -15,7 +15,7 @@ module.exports =
                 <span class='grey-text text-darken-4'>"
 
   h1Replacement: ->
-    "<div class='indigo darken-4 z-depth-2 slide__heading-wrapper'>
+    "<div class='indigo darken-4 slide__heading-wrapper'>
       <h1 class='center-align white-text slide__heading-heaader'"
 
   updateMarkup: (raw_html) ->

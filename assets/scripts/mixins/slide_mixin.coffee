@@ -18,12 +18,15 @@ module.exports =
   handleClick: (e) ->
     e.preventDefault()
     location = parseInt(_.last( document.location.href.split('/')))
-    if isNaN(location)
-      navigate("/1")
-    else if e.which == 1
-      navigate("/#{location + 1}")
+    if e.which == 1
+      if isNaN(location)
+        navigate("/1")
+      else
+        navigate("/#{location + 1}")
     else
-      if location == 1
+      if isNaN(location)
+        navigate("/1")
+      else if location == 1
         navigate("/")
       else
         navigate("/#{location - 1}")
