@@ -12,5 +12,5 @@ module.exports = React.createFactory React.createClass
     @updateMarkup(require('../../raw_slides/demo.md'))
 
   render: ->
-    div className: "white slide__body",
+    div className: "blue-gray lighten-5 slide__body",
       div dangerouslySetInnerHTML: __html: @markedDown()
