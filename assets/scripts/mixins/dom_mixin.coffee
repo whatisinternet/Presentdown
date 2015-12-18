@@ -18,7 +18,7 @@ module.exports =
     "<div class='indigo darken-4 z-depth-2 slide__heading-wrapper'>
       <h1 class='center-align white-text slide__heading-heaader'"
 
-  updateMardkup: (raw_html) ->
+  updateMarkup: (raw_html) ->
     raw_html = raw_html.replace("<img ", "<img class='responsive-img' ")
     raw_html = raw_html.replace("<video", "<img class='responsive-video' ")
     raw_html = raw_html.replace("<h1 ", @h1Replacement())
