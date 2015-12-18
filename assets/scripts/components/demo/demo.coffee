@@ -13,7 +13,7 @@ module.exports = React.createFactory React.createClass
       hljs.highlightBlock(code)
 
   markedDown: ->
-    raw_html = require('../../raw_slides/0.title.md')
+    raw_html = require('../../raw_slides/demo.md')
     raw_html = raw_html.replace("<h1 ", "<div class='indigo darken-4' style='width: 100%; margin-top: -35px;'><h1 class='center-align white-text' style='padding: 20px' ")
     raw_html = raw_html.replace("<hr>", "
     </div>
