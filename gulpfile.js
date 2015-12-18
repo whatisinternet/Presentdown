@@ -14,6 +14,7 @@ var fs = require('fs');
 gulp.task('clean', function() {
   return del([
     'dist/*.js',
+    'dist/images/*',
     'assets/config/*',
     'assets/config',
     'assets/scripts/components/*',
@@ -37,15 +38,6 @@ gulp.task('run', function() {
   });
 });
 
-gulp.task('watch', function () {
-    watch('**/*.coffee', batch(function (events, done) {
-        gulp.start('compile', done);
-    }));
-    watch('**/*.sass', batch(function (events, done) {
-        gulp.start('compile', done);
-    }));
-});
-
 
 gulp.task('build-slides', function() {
 
@@ -64,7 +56,6 @@ gulp.task('build-slides', function() {
         .pipe(rename( slideName + '.coffee'))
         .pipe(replace('demo', internalSlideName))
         .pipe(gulp.dest('./assets/scripts/components/slides'))
-
 
     });
   });
@@ -121,5 +112,9 @@ gulp.task('copy-app-template', function() {
     .pipe(gulp.dest('./assets/scripts/components'))
 });
 
-gulp.task('slides', function(){
-  runSequence('build-slides', 'build-routes', 'build-metods', 'copy-routes-template', 'copy-app-template')});
+gulp.task('prepare', function(){
+  runSequence('copy-routes-template', 'copy-app-template')});
+
+gulp.task('build', function(){
+  runSequence('build-slides', 'build-routes', 'build-methods')});
+
