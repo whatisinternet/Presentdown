@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "gulp": "gulp",
     "test": "echo \"Error!\" && exit 1",
     "deploy": "NODE_ENV=production webpack -p --config config/webpack.production.config.js",
     "app": "webpack-dev-server --devtool eval --progress --colors --host 0.0.0.0 --config config/webpack.config.js"
@@ -29,6 +30,7 @@
     "webpack": "^1.10.1"
   },
   "devDependencies": {
+    "del": "^2.2.0",
     "file-loader": "^0.8.5",
     "gulp": "^3.9.0",
     "gulp-batch": "^1.0.5",

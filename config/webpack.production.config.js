@@ -28,6 +28,7 @@ module.exports = {
       "React": "react",
       "ReactDOM": "react-dom",
       "_": "lodash",
+      "hljs": "highlight.js",
       "Bemmer": "bemmer-node/bemmer-class"
     })
   ]

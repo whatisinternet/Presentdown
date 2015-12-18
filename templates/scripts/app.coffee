@@ -10,12 +10,3 @@ module.exports = React.createFactory React.createClass
   render: ->
     @renderCurrentRoute()
 
-  title: ->
-    require('./slides/0-title') {}
-
-  intro: ->
-    require('./slides/1-intro') {}
-
-  slideTwo: ->
-    require('./slides/2-slideTwo') {}
-
