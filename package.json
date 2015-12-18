@@ -1,7 +1,12 @@
 {
-  "name": "webpakable-presentation",
-  "version": "0.0.1",
-  "description": "",
+  "name": "Presentdown",
+  "version": "0.0.5",
+  "description": "Create awesome presentations just using markdown",
+  "repository" :
+    {
+      "type" : "git",
+      "url" : "https://github.com/whatisinternet/Presentdown.git"
+    },
   "main": "index.js",
   "scripts": {
     "gulp": "gulp",
@@ -10,7 +15,7 @@
     "app": "webpack-dev-server --devtool eval --progress --colors --host 0.0.0.0 --config config/webpack.config.js"
   },
   "author": "Josh Teeter",
-  "license": "MIT",
+  "license": "BSD 3-Clause",
   "dependencies": {
     "bemmer-node": "^0.1.2",
     "coffee-loader": "^0.7.2",
