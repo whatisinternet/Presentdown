@@ -1,9 +1,38 @@
+@-webkit-keyframes slide-fade-in
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@-moz-keyframes slide-fade-in
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@-o-keyframes slide-fade-in
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@keyframes slide-fade-in
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+
 .slide
   &__body
     height: 110vh
 
   &__content
     padding: 20px
+    -webkit-animation: slide-fade-in 0.3s ease-in
+    -moz-animation:    slide-fade-in 0.3s ease-in
+    -o-animation:      slide-fade-in 0.3s ease-in
+    animation:         slide-fade-in 0.3s ease-in
 
   &__heading
 
