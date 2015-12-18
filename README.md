@@ -26,6 +26,7 @@ A markdown presentation tool written in ReactJS.
   [localhost:8080](http://localhost:8080)
 
 **Compile for external use**
+
 1. `gulp compile`
 2. Copy contents of dist to server/usb/folder
 3. Open index.html that was copied from from dist
@@ -43,7 +44,7 @@ heading automatically.
 
 #### Content and the hr tag
 
-The `<hr>` tag. Hr tags get replaced and converted into div wrappers for the
+Hr tags get replaced and converted into div wrappers for the
 main content. If possible only use 1 hr per slide
 
 ### Content
