@@ -1,4 +1,5 @@
 require './styles/index'
+require './styles/github'
 
 App = require("./scripts/components/app.coffee")
 

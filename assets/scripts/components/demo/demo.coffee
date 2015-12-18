@@ -1,19 +1,16 @@
 {div}  = React.DOM
 
 SlideMixin = require('../../mixins/slide_mixin')
+DOMMixin = require('../../mixins/dom_mixin')
 
 module.exports = React.createFactory React.createClass
   displayName: "demo"
 
-  mixins: [SlideMixin]
+  mixins: [SlideMixin, DOMMixin]
 
   markedDown: ->
-    require('../../raw_slides/demo.md')
+    @updateMarkup(require('../../raw_slides/demo.md'))
 
   render: ->
-    div className: "grey darken-4", style: {height: "100vh"},
-      div className: "row",
-        div className: "col s12",
-          div className: "container white-text",
-            div
-              dangerouslySetInnerHTML: __html: @markedDown()
+    div className: "blue-grey lighten-5 slide__body",
+      div dangerouslySetInnerHTML: __html: @markedDown()
