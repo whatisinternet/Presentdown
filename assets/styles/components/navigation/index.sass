@@ -1,0 +1,58 @@
+@-webkit-keyframes slide-fade-out
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
+@-moz-keyframes slide-fade-out
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
+@keyframes slide-fade-out
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
+@-webkit-keyframes less-obious
+  0%
+    opacity: 1
+  100%
+    opacity: 0.75
+
+@-moz-keyframes less-obious
+  0%
+    opacity: 1
+  100%
+    opacity: 0.75
+
+@keyframes less-obious
+  0%
+    opacity: 1
+  100%
+    opacity: 0.75
+
+.navigation
+
+  &__love-text
+    position: fixed
+    bottom: 15px
+    left: 24px
+    font-size: 10px
+    -webkit-animation: slide-fade-out 7s ease-out
+    -moz-animation:    slide-fade-out 7s ease-out
+    -o-animation:      slide-fade-out 7s ease-out
+    animation:         slide-fade-out 7s ease-out
+    opacity: 0
+
+    &-icon
+      font-size: 10px !important
+
+  &__fade-away
+    -webkit-animation: less-obious 3s ease-out
+    -moz-animation:    less-obious 3s ease-out
+    -o-animation:      less-obious 3s ease-out
+    animation:         less-obious 3s ease-out
+    opacity: 0.75

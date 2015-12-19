@@ -11,7 +11,7 @@ module.exports = React.createFactory React.createClass
 
     div {},
       div
-        className: 'fixed-action-button'
+        className: 'fixed-action-button navigation__fade-away'
         style: {position: "fixed", bottom: "45px", left: "24px"},
           div
             className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round'
@@ -20,7 +20,7 @@ module.exports = React.createFactory React.createClass
               className: 'material-icons grey-text',
                 "fast_rewind"
       div
-        className: 'fixed-action-button'
+        className: 'fixed-action-button navigation__fade-away'
         style: {position: "fixed", bottom: "45px", left: "74px"},
           div
             className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round'
@@ -30,13 +30,14 @@ module.exports = React.createFactory React.createClass
                 "fast_forward"
 
       div
+        className: 'navigation__love-text',
         style: {position: "fixed", bottom: "15px", left: "24px"},
           span
             className: 'grey-text',
             div {},
               'Created with '
               i
-                className: 'tiny material-icons',
+                className: 'navigation__love-text-icon material-icons',
                   "favorite"
               a
                 className: 'blue-grey-text'
@@ -47,7 +48,7 @@ module.exports = React.createFactory React.createClass
         className: 'fixed-action-button'
         style: {position: "fixed", bottom: "45px", right: "24px"},
           div
-            className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round'
+            className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round navigation__fade-away'
             onClick: @toggleFullScreen,
             i
               className: 'material-icons grey-text',
