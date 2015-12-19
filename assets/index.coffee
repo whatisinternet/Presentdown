@@ -1,10 +1,17 @@
 require './styles/index'
 require './styles/github'
 
-App = require("./scripts/components/app.coffee")
+ReactRedux = require('react-redux')
+Provider = ReactRedux.Provider
+
+{store} = require('./scripts/reducers/settings')
+
+App = require("./scripts/containers/app.coffee")
 
 document.addEventListener "DOMContentLoaded", (e) ->
   ReactDOM.render(
-    App()
+    React.createElement(Provider, {store: store},
+      React.createElement(App, null)
+    )
     document.getElementById('presentation')
   )

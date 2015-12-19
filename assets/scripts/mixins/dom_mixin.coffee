@@ -6,8 +6,9 @@ module.exports =
       hljs.highlightBlock(code)
 
   hrReplacement: ->
-    backgroundColour = require('../../config/config.json')['backgroundColour']
-    textColour= require('../../config/config.json')['textColour']
+    {settings} = @props
+    backgroundColour = settings['backgroundColour']
+    textColour= settings['textColour']
     "</div>
       <div class='row'>
         <div class='col s12'>
@@ -17,7 +18,9 @@ module.exports =
                 <span class='#{textColour}'>"
 
   h1Replacement: ->
-    colour = require('../../config/config.json')['titleColour']
+    {settings} = @props
+    console.log @props
+    colour = settings['titleColour']
     titleTextColour= require('../../config/config.json')['titleTextColour']
     "<div class='#{colour} slide__heading-wrapper'>
       <h1 class='center-align #{titleTextColour} slide__heading-header'"
