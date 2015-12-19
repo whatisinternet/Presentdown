@@ -1,8 +1,8 @@
 {
-  "titleColour": "indigo darken-2",
+  "titleColour": "deep-orange darken-2",
   "titleTextColour": "white-text",
   "backgroundColour": "white",
   "textColour": "grey-text text-darken-4",
-  "highlightColour": "#ff3d00",
-  "hoverColour": "#dd2c00"
+  "highlightColour": "#03A9F4",
+  "hoverColour": "#0091ea"
 }
