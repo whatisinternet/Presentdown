@@ -10,7 +10,7 @@ module.exports =
       <div class='row'>
         <div class='col s12'>
           <div class='container'>
-            <div class='card-pannel white z-depth-4' >
+            <div class='card-pannel white z-depth-4 slide__container' >
               <div class='slide__content'>
                 <span class='grey-text text-darken-4'>"
 
