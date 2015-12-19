@@ -1,38 +1,4 @@
-@-webkit-keyframes slide-fade-out
-  0%
-    opacity: 1
-  100%
-    opacity: 0
-
-@-moz-keyframes slide-fade-out
-  0%
-    opacity: 1
-  100%
-    opacity: 0
-
-@keyframes slide-fade-out
-  0%
-    opacity: 1
-  100%
-    opacity: 0
-
-@-webkit-keyframes less-obious
-  0%
-    opacity: 1
-  100%
-    opacity: 0.75
-
-@-moz-keyframes less-obious
-  0%
-    opacity: 1
-  100%
-    opacity: 0.75
-
-@keyframes less-obious
-  0%
-    opacity: 1
-  100%
-    opacity: 0.75
+@import './keyframes'
 
 .navigation
 
@@ -45,7 +11,13 @@
     -moz-animation:    slide-fade-out 7s ease-out
     -o-animation:      slide-fade-out 7s ease-out
     animation:         slide-fade-out 7s ease-out
-    opacity: 0
+    opacity: 0.15
+    &:hover
+      -webkit-animation: more-obious .3s ease-in
+      -moz-animation:    more-obious .3s ease-in
+      -o-animation:      more-obious .3s ease-in
+      animation:         more-obious .3s ease-in
+      opacity: 1
 
     &-icon
       font-size: 10px !important
@@ -55,4 +27,11 @@
     -moz-animation:    less-obious 3s ease-out
     -o-animation:      less-obious 3s ease-out
     animation:         less-obious 3s ease-out
-    opacity: 0.75
+    opacity: 0.4
+    &:hover
+      -webkit-animation: more-obious .3s ease-in
+      -moz-animation:    more-obious .3s ease-in
+      -o-animation:      more-obious .3s ease-in
+      animation:         more-obious .3s ease-in
+      opacity: 1
+

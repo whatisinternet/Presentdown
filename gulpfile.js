@@ -80,7 +80,6 @@ gulp.task('build-routes', function() {
       fs.appendFile('./assets/config/routes.coffee', route, function(err) {
         if (err)
           console.error(err);
-        console.log('Created Route!');
       });
     });
   });
@@ -103,7 +102,6 @@ gulp.task('build-methods', function() {
       fs.appendFile('./assets/scripts/components/app.coffee', fn , function(err) {
         if (err)
           console.error(err);
-        console.log('Created mini router method!');
       });
     });
   });
