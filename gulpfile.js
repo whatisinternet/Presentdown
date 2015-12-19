@@ -17,6 +17,7 @@ gulp.task('clean', function() {
     'dist/images/*',
     'assets/config/*',
     'assets/config',
+    'assets/styles/base-colours.sass',
     'assets/scripts/components/app.coffee',
     'assets/scripts/components/slides/*',
     'assets/scripts/components/slides',
@@ -62,6 +63,22 @@ gulp.task('build-slides', function() {
   });
 });
 
+gulp.task('build-colours', function() {
+
+  fs.readdir('./slides/', function(err, items) {
+    items.map(function(file){
+      var fileParts = file.split('.');
+      if (fileParts[1] == 'json') {
+        var colour = require('./slides/config.json')['highlightColour']
+        var highlightColour = "$highlight-colour: " + colour
+        fs.appendFile('./assets/styles/base-colours.sass', highlightColour, function(err) {
+          if (err)
+            console.error(err);
+        });
+      }
+    });
+  });
+});
 
 
 gulp.task('build-routes', function() {
@@ -69,18 +86,20 @@ gulp.task('build-routes', function() {
   fs.readdir('./slides/', function(err, items) {
     items.map(function(file){
       var fileParts = file.split('.');
-      var slideName = [fileParts[0], fileParts[1]].join('-')
-      var internalSlideName = [fileParts[0], fileParts[1]].join('.')
-      var route = ""
-      if (fileParts[0] === "0") {
-        route = "  '/': '" + fileParts[1]  + "'\n"
-      } else {
-        route = "  '/" + fileParts[0] + "': '" + fileParts[1]  + "'\n"
+      if (fileParts[2] == 'md') {
+        var slideName = [fileParts[0], fileParts[1]].join('-')
+        var internalSlideName = [fileParts[0], fileParts[1]].join('.')
+        var route = ""
+        if (fileParts[0] === "0") {
+          route = "  '/': '" + fileParts[1]  + "'\n"
+        } else {
+          route = "  '/" + fileParts[0] + "': '" + fileParts[1]  + "'\n"
+        }
+        fs.appendFile('./assets/config/routes.coffee', route, function(err) {
+          if (err)
+            console.error(err);
+        });
       }
-      fs.appendFile('./assets/config/routes.coffee', route, function(err) {
-        if (err)
-          console.error(err);
-      });
     });
   });
 });
@@ -90,21 +109,28 @@ gulp.task('build-methods', function() {
   fs.readdir('./slides/', function(err, items) {
     items.map(function(file){
       var fileParts = file.split('.');
-      var slideName = [fileParts[0], fileParts[1]].join('-')
-      var internalSlideName = [fileParts[0], fileParts[1]].join('.')
-      var fn = ""
-      if (fileParts[0] === "0") {
-        fn = "  notFound: ->\n" +  "    navigate('/', true)\n    require('./slides/" + slideName  + "') {}\n\n"
-        fn += "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {}\n\n"
-      } else {
-        fn = "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {}\n\n"
+      if (fileParts[2] == 'md') {
+        var slideName = [fileParts[0], fileParts[1]].join('-')
+        var internalSlideName = [fileParts[0], fileParts[1]].join('.')
+        var fn = ""
+        if (fileParts[0] === "0") {
+          fn = "  notFound: ->\n" +  "    navigate('/', true)\n    require('./slides/" + slideName  + "') {}\n\n"
+          fn += "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {}\n\n"
+        } else {
+          fn = "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {}\n\n"
+        }
+        fs.appendFile('./assets/scripts/components/app.coffee', fn , function(err) {
+          if (err)
+            console.error(err);
+        });
       }
-      fs.appendFile('./assets/scripts/components/app.coffee', fn , function(err) {
-        if (err)
-          console.error(err);
-      });
     });
   });
+});
+
+gulp.task('copy-config', function() {
+  var files = gulp.src('./slides/config.json')
+    .pipe(gulp.dest('./assets/config'))
 });
 
 gulp.task('copy-routes-template', function() {
@@ -118,8 +144,8 @@ gulp.task('copy-app-template', function() {
 });
 
 gulp.task('prepare', function(){
-  runSequence('copy-routes-template', 'copy-app-template')});
+  runSequence('copy-routes-template', 'copy-app-template', 'copy-config')});
 
 gulp.task('build', function(){
-  runSequence('build-slides', 'build-routes', 'build-methods')});
+  runSequence('build-slides', 'build-routes', 'build-methods', 'build-colours')});
 

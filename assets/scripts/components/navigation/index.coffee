@@ -17,7 +17,7 @@ module.exports = React.createFactory React.createClass
             className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round'
             onClick: @handleOnClickBack,
             i
-              className: 'material-icons grey-text',
+              className: 'material-icons grey-text navigation__highlight',
                 "fast_rewind"
       div
         className: 'fixed-action-button navigation__fade-away'
@@ -26,7 +26,7 @@ module.exports = React.createFactory React.createClass
             className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round'
             onClick: @handleOnClickForward,
             i
-              className: 'material-icons grey-text',
+              className: 'material-icons grey-text navigation__highlight',
                 "fast_forward"
       div
         className: 'fixed-action-button navigation__fade-away'
@@ -35,18 +35,18 @@ module.exports = React.createFactory React.createClass
             className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round'
             onClick: @handleOnClickHome,
             i
-              className: 'material-icons grey-text',
+              className: 'material-icons grey-text navigation__highlight',
                 "home"
 
       div
         className: 'navigation__love-text',
         style: {position: "fixed", bottom: "15px", left: "24px"},
           span
-            className: 'grey-text',
+            className: 'grey-text navigation__highlight',
             div {},
               'Created with '
               i
-                className: 'navigation__love-text-icon material-icons',
+                className: 'material-icons grey-text navigation__love-text-icon',
                   "favorite"
               a
                 className: 'blue-grey-text'
@@ -60,5 +60,5 @@ module.exports = React.createFactory React.createClass
             className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round navigation__fade-away'
             onClick: @toggleFullScreen,
             i
-              className: 'material-icons grey-text',
+              className: 'material-icons grey-text navigation__highlight',
                 "settings_overscan"
