@@ -3,7 +3,6 @@
 module.exports =
 
   handleKeyUp: (e) ->
-    e.preventDefault()
     location = parseInt(_.last(document.location.href.split('/')))
     if parseInt(e.keyCode) == 39  || parseInt(e.keyCode) == 13
       if isNaN(location)
@@ -19,7 +18,6 @@ module.exports =
         navigate("/#{location - 1}")
 
   handleClick: (e) ->
-    e.preventDefault()
     location = parseInt(_.last( document.location.href.split('/')))
     if e.which == 1
       if isNaN(location)
@@ -36,9 +34,11 @@ module.exports =
     false
 
   componentDidMount: ->
-    document.addEventListener('click', @handleClick, false)
+    document.getElementById('slide-container')
+      .addEventListener('click', @handleClick, false)
     document.addEventListener('keyup', @handleKeyUp, false)
 
   componentWillUnmount: ->
-    document.removeEventListener('click', @handleClick)
+    document.getElementById('slide-container')
+      .removeEventListener('click', @handleClick)
     document.removeEventListener('keyup', @handleKeyUp)

@@ -3,6 +3,8 @@
 SlideMixin = require('../../mixins/slide_mixin')
 DOMMixin = require('../../mixins/dom_mixin')
 
+Navigation = require('../navigation/index')
+
 module.exports = React.createFactory React.createClass
   displayName: "demo"
 
@@ -12,5 +14,9 @@ module.exports = React.createFactory React.createClass
     @updateMarkup(require('../../raw_slides/demo.md'))
 
   render: ->
-    div className: "blue-grey lighten-5 slide__body",
-      div dangerouslySetInnerHTML: __html: @markedDown()
+    div {},
+      div
+        id: 'slide-container'
+        className: "blue-grey lighten-5 slide__body",
+        div dangerouslySetInnerHTML: __html: @markedDown(),
+      Navigation {},

@@ -17,8 +17,9 @@ gulp.task('clean', function() {
     'dist/images/*',
     'assets/config/*',
     'assets/config',
-    'assets/scripts/components/*',
-    'assets/scripts/components',
+    'assets/scripts/components/app.coffee',
+    'assets/scripts/components/slides/*',
+    'assets/scripts/components/slides',
     'assets/scripts/raw_slides/*',
     'assets/scripts/raw_slides',
   ]);
