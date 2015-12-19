@@ -114,10 +114,10 @@ gulp.task('build-methods', function() {
         var internalSlideName = [fileParts[0], fileParts[1]].join('.')
         var fn = ""
         if (fileParts[0] === "0") {
-          fn = "  notFound: ->\n" +  "    navigate('/', true)\n    require('./slides/" + slideName  + "') {}\n\n"
-          fn += "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {}\n\n"
+          fn = "  notFound: ->\n" +  "    navigate('/', true)\n    require('./slides/" + slideName  + "') {settings: @props.settings}\n\n"
+          fn += "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {settings: @props.settings}\n\n"
         } else {
-          fn = "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {}\n\n"
+          fn = "  " + fileParts[1]  + ": ->\n" +  "    require('./slides/" + slideName  + "') {settings: @props.settings}\n\n"
         }
         fs.appendFile('./assets/scripts/components/app.coffee', fn , function(err) {
           if (err)

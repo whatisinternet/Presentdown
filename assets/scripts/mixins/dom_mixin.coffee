@@ -6,8 +6,9 @@ module.exports =
       hljs.highlightBlock(code)
 
   hrReplacement: ->
-    backgroundColour = require('../../config/config.json')['backgroundColour']
-    textColour= require('../../config/config.json')['textColour']
+    {settings} = @props
+    backgroundColour = settings['backgroundColour']
+    textColour= settings['textColour']
     "</div>
       <div class='row'>
         <div class='col s12'>
@@ -17,12 +18,32 @@ module.exports =
                 <span class='#{textColour}'>"
 
   h1Replacement: ->
-    colour = require('../../config/config.json')['titleColour']
+    {settings} = @props
+    colour = settings['titleColour']
     titleTextColour= require('../../config/config.json')['titleTextColour']
     "<div class='#{colour} slide__heading-wrapper'>
       <h1 class='center-align #{titleTextColour} slide__heading-header'"
 
+  aStyles: ->
+    {settings} = @props
+    highlightColour = settings['highlightColour']
+    hoverColour = settings['hoverColour']
+    "<style>a {
+      color: #{highlightColour} !important;
+      -o-transition: .3s;
+      -ms-transition: .3s;
+      -moz-transition: .3s;
+      -webkit-transition: .3s;
+      transition: .3s;
+      }
+      a:hover {
+        color: #{hoverColour} !important;}
+      a:active {
+        color: #{highlightColour} !important;}
+    </style>"
+
   updateMarkup: (raw_html) ->
+    raw_html += @aStyles()
     raw_html = raw_html.replace("<img ", "<img class='responsive-img' ")
     raw_html = raw_html.replace("<video", "<img class='responsive-video' ")
     raw_html = raw_html.replace("<h1 ", @h1Replacement())

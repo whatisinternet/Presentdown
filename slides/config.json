@@ -3,5 +3,6 @@
   "titleTextColour": "white-text",
   "backgroundColour": "white",
   "textColour": "grey-text text-darken-4",
-  "highlightColour": "#ff3d00"
+  "highlightColour": "#ff3d00",
+  "hoverColour": "#dd2c00"
 }
