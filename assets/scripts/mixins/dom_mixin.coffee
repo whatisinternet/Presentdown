@@ -19,13 +19,31 @@ module.exports =
 
   h1Replacement: ->
     {settings} = @props
-    console.log @props
     colour = settings['titleColour']
     titleTextColour= require('../../config/config.json')['titleTextColour']
     "<div class='#{colour} slide__heading-wrapper'>
       <h1 class='center-align #{titleTextColour} slide__heading-header'"
 
+  aStyles: ->
+    {settings} = @props
+    highlightColour = settings['highlightColour']
+    hoverColour = settings['hoverColour']
+    "<style>a {
+      color: #{highlightColour} !important;
+      -o-transition: .3s;
+      -ms-transition: .3s;
+      -moz-transition: .3s;
+      -webkit-transition: .3s;
+      transition: .3s;
+      }
+      a:hover {
+        color: #{hoverColour} !important;}
+      a:active {
+        color: #{highlightColour} !important;}
+    </style>"
+
   updateMarkup: (raw_html) ->
+    raw_html += @aStyles()
     raw_html = raw_html.replace("<img ", "<img class='responsive-img' ")
     raw_html = raw_html.replace("<video", "<img class='responsive-video' ")
     raw_html = raw_html.replace("<h1 ", @h1Replacement())
