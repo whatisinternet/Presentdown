@@ -1,6 +1,10 @@
 {navigate} = require('react-mini-router')
 
 module.exports =
+  handleOnClickHome: (e) ->
+    navigate("/")
+    false
+
   handleOnClickForward: (e) ->
     location = parseInt(_.last( document.location.href.split('/')))
     if isNaN(location)

@@ -28,6 +28,15 @@ module.exports = React.createFactory React.createClass
             i
               className: 'material-icons grey-text',
                 "fast_forward"
+      div
+        className: 'fixed-action-button navigation__fade-away'
+        style: {position: "fixed", bottom: "45px", left: "124px"},
+          div
+            className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round'
+            onClick: @handleOnClickHome,
+            i
+              className: 'material-icons grey-text',
+                "home"
 
       div
         className: 'navigation__love-text',
