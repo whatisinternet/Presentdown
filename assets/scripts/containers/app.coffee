@@ -7,6 +7,6 @@ mapStateToProps = (state) ->
 
 mapDispatchToProps = (dispatch) ->
   handleSettingsChange: (settings) ->
-    dispatch({settings: settings})
+    dispatch({type: 'UPDATE_SETTING', settings: settings})
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(App)

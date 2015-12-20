@@ -4,5 +4,6 @@
   "backgroundColour": "white",
   "textColour": "grey-text text-darken-4",
   "highlightColour": "#03A9F4",
-  "hoverColour": "#0091ea"
+  "hoverColour": "#0091ea",
+  "bodyTextColour": "grey darken-4"
 }

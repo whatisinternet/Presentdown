@@ -7,6 +7,7 @@ module.exports = React.createFactory React.createClass
 
   mixins: [Navigation]
 
+
   render: ->
 
     div {},
@@ -62,3 +63,4 @@ module.exports = React.createFactory React.createClass
             i
               className: 'material-icons grey-text navigation__highlight',
                 "settings_overscan"
+
