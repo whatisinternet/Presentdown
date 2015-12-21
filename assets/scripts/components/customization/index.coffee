@@ -34,7 +34,7 @@ module.exports = React.createFactory React.createClass
       div
         onClick: @showModal
         className: 'fixed-action-button modal__button'
-        style: {position: "fixed", top: "50%", right: "24px"},
+        style: {position: "fixed", bottom: "45px", right: "74px"},
           i
             className: 'material-icons grey-text navigation__highlight navigation__fade-away',
               "settings"

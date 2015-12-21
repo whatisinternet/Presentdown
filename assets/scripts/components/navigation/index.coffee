@@ -24,7 +24,7 @@ module.exports = React.createFactory React.createClass
         className: 'fixed-action-button navigation__fade-away'
         style: {position: "fixed", bottom: "45px", left: "24px"},
           div
-            className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round'
+            className: 'modal__button navigation__fade-away'
             onClick: @handleOnClickBack,
             i
               className: 'material-icons grey-text navigation__highlight',
@@ -33,7 +33,7 @@ module.exports = React.createFactory React.createClass
         className: 'fixed-action-button navigation__fade-away'
         style: {position: "fixed", bottom: "45px", left: "74px"},
           div
-            className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round'
+            className: 'modal__button navigation__fade-away'
             onClick: @handleOnClickForward,
             i
               className: 'material-icons grey-text navigation__highlight',
@@ -42,7 +42,7 @@ module.exports = React.createFactory React.createClass
         className: 'fixed-action-button navigation__fade-away'
         style: {position: "fixed", bottom: "45px", left: "124px"},
           div
-            className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round'
+            className: 'modal__button navigation__fade-away'
             onClick: @handleOnClickHome,
             i
               className: 'material-icons grey-text navigation__highlight',
@@ -56,7 +56,7 @@ module.exports = React.createFactory React.createClass
             div {},
               'Created with '
               i
-                className: 'material-icons grey-text navigation__love-text-icon',
+                className: 'material-icons red-text navigation__love-text-icon',
                   "favorite"
               a
                 className: 'blue-grey-text'
@@ -67,7 +67,7 @@ module.exports = React.createFactory React.createClass
         className: 'fixed-action-button'
         style: {position: "fixed", bottom: "45px", right: "24px"},
           div
-            className: 'btn-floating btn-small waves-effect waves-light blue-grey lighten-5 round navigation__fade-away'
+            className: 'modal__button navigation__fade-away'
             onClick: @toggleFullScreen,
             i
               className: 'material-icons grey-text navigation__highlight',
