@@ -1,4 +1,4 @@
-{div, i, span, a} = React.DOM
+{div, i, span, a, style} = React.DOM
 
 Navigation = require('../../mixins/nav_mixin')
 
@@ -7,10 +7,19 @@ module.exports = React.createFactory React.createClass
 
   mixins: [Navigation]
 
-
   render: ->
 
+
     div {},
+      style {},
+        ".navigation__highlight:hover{
+          -o-transition: .3s;
+          -ms-transition: .3s;
+          -moz-transition: .3s;
+          -webkit-transition: .3s;
+          transition: .3s;
+          color: #{@props.settings.hoverColour} !important;
+          }"
       div
         className: 'fixed-action-button navigation__fade-away'
         style: {position: "fixed", bottom: "45px", left: "24px"},

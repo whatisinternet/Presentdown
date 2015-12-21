@@ -1,56 +1,11 @@
 {div, select, p, h4, i, option, label, input} = React.DOM
 
+ColourMixin = require('../../mixins/colour_mixin')
+
 module.exports = React.createFactory React.createClass
   displayName: "Customization"
 
-  colours: ->
-    ["red",
-    "pink",
-    "purple",
-    "deep-purple",
-    "indigo",
-    "blue",
-    "light-blue",
-    "cyan",
-    "teal",
-    "green",
-    "light-green",
-    "lime",
-    "yellow",
-    "amber",
-    "orange",
-    "deep-orange",
-    "brown",
-    "grey",
-    "blue-grey",
-    "black",
-    "white",
-    "transparent"]
-
-  shades: ->
-    lightens = _.map [1..5], (idx) ->
-      "lighten-#{idx}"
-    darkens = _.map [1..4], (idx) ->
-      "darken-#{idx}"
-    accents= _.map [1..4], (idx) ->
-      "accent-#{idx}"
-    _.flatten [lightens, darkens, accents]
-
-  colourOptions: ->
-    _.flatten _.reduce @colours(), ((colours, colour) =>
-      colours.push [colour]
-      colours.push _.map @shades(), (shade) ->
-        "#{colour} #{shade}"
-      colours
-    ), []
-
-  textColourOptions: ->
-    _.flatten _.reduce @colours(), ((colours, colour) =>
-      colours.push ["#{colour}-text"]
-      colours.push _.map @shades(), (shade) ->
-        "#{colour}-text text-#{shade}"
-      colours
-    ), []
+  mixins: [ColourMixin]
 
   showModal: ->
     overlay = document.getElementById('materialize-lean-overlay-9')
@@ -77,64 +32,74 @@ module.exports = React.createFactory React.createClass
   render: ->
     div {},
       div
-        className: 'fixed-action-button'
+        onClick: @showModal
+        className: 'fixed-action-button modal__button'
         style: {position: "fixed", top: "50%", right: "24px"},
           i
-            onClick: @showModal
             className: 'material-icons grey-text navigation__highlight navigation__fade-away',
               "settings"
 
       div
-        className: 'lean-overlay'
+        className: 'lean-overlay modal__overlay-fade'
         onClick: @hideModal
         id: 'materialize-lean-overlay-9',
           ''
       div
-        className: "modal bottom-sheet"
+        className: "modal blue-grey darken-4 white-text modal__fade"
         id: "customization-modal",
           div
             className: "modal-content",
               h4 {},
                 "Customization menu"
               div
-                className: 'col s12',
-                _.map @props.settings, (setting, key) =>
-                  if "#{setting}".includes("#")
-                    div
-                      key: key,
-                        label {},
-                          _.startCase key
-                      input
-                        value: setting
-                        onChange: (e) => @props.handleSettingsChange({"#{key}": e.target.value})
-                  else
-                    div
-                      key: key,
-                        label {},
-                          _.startCase key
-                        select
-                          onChange: (e) => @props.handleSettingsChange({"#{key}": e.target.value})
-                          value: setting
-                          style: {display: 'block', width: '25%'},
-                          if setting.toLowerCase().includes('text')
-                            _.map @textColourOptions(), (colour) =>
-                              option
-                                key: colour
-                                value: colour
-                                defaultValue: setting,
-                                  colour
-                          else
-                            _.map @colourOptions(), (colour) =>
-                              option
-                                key: colour
-                                value: colour
-                                defaultValue: setting,
-                                  colour
+                className: 'row',
+                div
+                  className: 'col s12',
+                  _.map @props.settings, (setting, key) =>
+                    if "#{setting}".includes("#")
+                      div
+                        key: key,
+                          label {},
+                            _.startCase key
+                          select
+                            onChange: (e) => @props.handleSettingsChange({"#{key}": e.target.value})
+                            value: setting
+                            style: {display: 'block', color: "#{setting}"},
+                              _.map @hexColourList(), (colour, name) ->
+                                option
+                                  key: colour
+                                  value: colour
+                                  defaultValue: setting.toUpperCase(),
+                                    name
+                    else
+                      div
+                        key: key,
+                          label {},
+                            _.startCase key
+                          select
+                            className: "#{setting}"
+                            onChange: (e) => @props.handleSettingsChange({"#{key}": e.target.value})
+                            value: setting
+                            style: {display: 'block'},
+                            if key.toLowerCase().includes('text')
+                              _.map @textColourOptions(), (colour) =>
+                                option
+                                  key: colour
+                                  value: colour
+                                  defaultValue: setting,
+                                    colour
+                            else
+                              _.map @colourOptions(), (colour) =>
+                                option
+                                  key: colour
+                                  value: colour
+                                  defaultValue: setting,
+                                    colour
 
 
-          div
-            className: "modal-footer",
-              div
-                className: "modal-action modal-close waves-effect waves-blue btn-flat"
-                onClick: @hideModal,
-                  "close"
+            div
+              className: "modal-footer blue-grey darken-4 white-text modal-fade",
+                div
+                  className: "white-text blue-grey darken-4 modal-action modal-close waves-effect waves-blue btn-flat"
+                  onClick: @hideModal,
+                    "close"

@@ -26,4 +26,5 @@ module.exports = React.createFactory React.createClass
             settings: @props.settings
             handleSettingsChange: @props.handleSettingsChange,
         div {},
-          Navigation {},
+          Navigation
+            settings: @props.settings,
