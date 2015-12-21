@@ -20,9 +20,12 @@ module.exports =
   h1Replacement: ->
     {settings} = @props
     colour = settings['titleColour']
-    titleTextColour= require('../../config/config.json')['titleTextColour']
+    titleTextColour = settings['titleTextColour']
     "<div class='#{colour} slide__heading-wrapper'>
       <h1 class='center-align #{titleTextColour} slide__heading-header'"
+
+  pReplacement: ->
+    "<p class='#{@props.settings['bodyTextColour']} flow-text' "
 
   aStyles: ->
     {settings} = @props
@@ -48,5 +51,6 @@ module.exports =
     raw_html = raw_html.replace("<video", "<img class='responsive-video' ")
     raw_html = raw_html.replace("<h1 ", @h1Replacement())
     raw_html = raw_html.replace("<hr>", @hrReplacement())
+    raw_html = raw_html.replace("<p", @pReplacement())
     raw_html += "</span></div></div></div></div></div>"
     raw_html

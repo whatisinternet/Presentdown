@@ -1,0 +1,21 @@
+@import './keyframes'
+
+.modal
+  overflow: hidden
+
+  &__button
+    cursor: pointer
+
+  &__fade
+    -webkit-animation: more-obious .5s ease-in
+    -moz-animation:    more-obious .5s ease-in
+    -o-animation:      more-obious .5s ease-in
+    animation:         more-obious .5s ease-in
+    opacity: 1
+  &__overlay
+    &-fade
+      -webkit-animation: modal-overlay-more-obious .5s ease-in
+      -moz-animation:    modal-overlay-more-obious .5s ease-in
+      -o-animation:      modal-overlay-more-obious .5s ease-in
+      animation:         modal-overlay-more-obious .5s ease-in
+      opacity: 1

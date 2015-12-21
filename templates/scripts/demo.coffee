@@ -4,6 +4,7 @@ SlideMixin = require('../../mixins/slide_mixin')
 DOMMixin = require('../../mixins/dom_mixin')
 
 Navigation = require('../navigation/index')
+Customization = require('../customization/index')
 
 module.exports = React.createFactory React.createClass
   displayName: "demo"
@@ -19,4 +20,11 @@ module.exports = React.createFactory React.createClass
         id: 'slide-container'
         className: "blue-grey lighten-5 slide__body",
         div dangerouslySetInnerHTML: __html: @markedDown(),
-      Navigation {},
+      div {},
+        div {},
+          Customization
+            settings: @props.settings
+            handleSettingsChange: @props.handleSettingsChange,
+        div {},
+          Navigation
+            settings: @props.settings,
