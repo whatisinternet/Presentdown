@@ -7,6 +7,10 @@ module.exports = React.createFactory React.createClass
 
   mixins: [RouterMixin]
 
+  componentDidMount: ->
+    themeColour = document.getElementById('meta-theme-color')
+    themeColour.setAttribute("content", @props.settings['highlightColour'])
+
   routes: require('../../config/routes')
 
   render: ->
