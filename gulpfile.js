@@ -26,6 +26,13 @@ gulp.task('clean', function() {
   ]);
 });
 
+gulp.task('compile-viewer', function() {
+  exec('npm install && npm run deploy-viewer', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+  });
+});
+
 gulp.task('compile', function() {
   exec('npm install && npm run deploy', function (err, stdout, stderr) {
     console.log(stdout);
