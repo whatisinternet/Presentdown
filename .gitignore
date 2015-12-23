@@ -1,4 +1,7 @@
 node_modules
 build/Release
+electron-packages
+electron/dist
+electron/app.js
 logs
 *.log

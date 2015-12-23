@@ -3,8 +3,6 @@ app = electron.app
 
 require('crash-reporter').start()
 
-require('electron-debug')()
-
 WND_STATE =
   MINIMIZED: 0
   NORMAL: 1
