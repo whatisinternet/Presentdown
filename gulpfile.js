@@ -26,27 +26,59 @@ gulp.task('clean', function() {
   ]);
 });
 
-gulp.task('compile-viewer', function() {
-  exec('npm install && npm run deploy-viewer', function (err, stdout, stderr) {
+gulp.task('clean-gh-pages', function() {
+  return del([
+    'assets/*',
+    'assets',
+    'config/*',
+    'config',
+    'slides/*',
+    'slides',
+    'templates',
+    'templates/*',
+    'gulpfile.js',
+    'index.html',
+    'package.json',
+    'README.md',
+  ]);
+});
+
+gulp.task('compile-viewer', ['build'], function() {
+  exec('npm run deploy-viewer', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
   });
 });
 
-gulp.task('compile', function() {
-  exec('npm install && npm run deploy', function (err, stdout, stderr) {
+gulp.task('compile-viewer', ['build'], function() {
+  exec('npm run deploy-viewer', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
   });
 });
 
-gulp.task('run', function() {
+gulp.task('compile', ['build'], function() {
+  exec('npm run deploy', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+  });
+});
+
+gulp.task('run', ['build'], function() {
   exec('npm run app', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
   });
 });
 
+gulp.task('build', ['clean', 'prepare'], function(){
+  setTimeout(function() {
+    runSequence('build-slides', 'build-colours', 'build-methods', 'build-routes')
+  }, 1000)
+});
+
+gulp.task('prepare', function(){
+  runSequence('copy-routes-template', 'copy-app-template', 'copy-config')});
 
 gulp.task('build-slides', function() {
 
@@ -149,10 +181,4 @@ gulp.task('copy-app-template', function() {
   var files = gulp.src('./templates/scripts/app.coffee')
     .pipe(gulp.dest('./assets/scripts/components'))
 });
-
-gulp.task('prepare', function(){
-  runSequence('copy-routes-template', 'copy-app-template', 'copy-config')});
-
-gulp.task('build', function(){
-  runSequence('build-slides', 'build-routes', 'build-methods', 'build-colours')});
 
