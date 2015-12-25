@@ -15,13 +15,16 @@ module.exports = {
     loaders: [
       { test: /\.coffee$/, loader: "coffee-loader" },
       { test: /\.(png|jpg)$/, loader: "file-loader?name=images/[name].[ext]" },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader"},
       { test: /\.(md)$/, loader: "html!markdown?gfm=true" },
       { test: /\.(json)$/, loader: "json" },
-      { test: /\.sass$/, loader: "style-loader!css-loader!sass?indentedSyntax" },
+      { test: /\.css$/, loader: "style!css" },
+      { test: /\.sass$/, loader: "style-loader!css-loader!sass?indentedSyntax" }
     ]
   },
   resolve: {
-    extensions: ["", ".js", ".coffee", ".sass", ".scss", ".md"]
+    extensions: ["", ".js", ".coffee", ".sass", ".css", ".md", "eot", "svg", "ttf", "woff", "woff2"]
   },
 
   plugins: [
@@ -32,5 +35,5 @@ module.exports = {
       "hljs": "highlight.js",
       "Bemmer": "bemmer-node/bemmer-class"
     })
-  ]
+    ]
 }

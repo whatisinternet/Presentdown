@@ -36,6 +36,8 @@ gulp.task('clean-gh-pages', function() {
     'slides',
     'templates',
     'templates/*',
+    'electron/*',
+    'electron',
     'gulpfile.js',
     'index.html',
     'package.json',
@@ -43,11 +45,11 @@ gulp.task('clean-gh-pages', function() {
   ]);
 });
 
-gulp.task('compile-viewer', ['build'], function() {
-  exec('npm run deploy-viewer', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-  });
+gulp.task('compile-gh-pages', ['compile'], function() {
+  exec('mv dist/* .', function (err, stdout, stderr) {});
+  exec('rm -rf dist', function (err, stdout, stderr) {});
+  exec('git add . --all', function (err, stdout, stderr) {});
+  exec('git commit -am ":shipit:"', function (err, stdout, stderr) {});
 });
 
 gulp.task('compile-viewer', ['build'], function() {
