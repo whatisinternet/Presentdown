@@ -1,5 +1,8 @@
+require 'materialize-css/dist/css/materialize.css'
 require './styles/index'
 require './styles/github'
+require 'jQuery/dist/jquery.js'
+require 'materialize-css/dist/js/materialize.min.js'
 
 ReactRedux = require('react-redux')
 Provider = ReactRedux.Provider

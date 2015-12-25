@@ -16,6 +16,9 @@ module.exports = React.createFactory React.createClass
     modal.style['z-index'] = 1003
     modal.style['display'] = 'block'
     modal.style['opacity'] = 1
+    modal.style['top'] = '0px'
+    modal.style['left'] = '0px'
+    modal.style['right'] = '0px'
     modal.style['bottom'] = '0px'
 
   hideModal: ->

@@ -6,9 +6,9 @@ module.exports = {
   },
 
   output: {
-    path: './dist',
+    path: './electron',
     publicPath: '/',
-    filename: "presentation.entry.js"
+    filename: "app.js"
   },
 
   module: {
